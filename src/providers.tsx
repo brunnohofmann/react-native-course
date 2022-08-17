@@ -1,4 +1,5 @@
 import React from 'react';
+import 'react-native-gesture-handler';
 import {useColorScheme} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import ReactNavigationTheme from './config/themes/navigationCustomTheme';
