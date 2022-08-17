@@ -1,17 +1,23 @@
 import React from 'react';
-import {ViewProps} from 'react-native';
+import {useColorScheme} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import ReactNavigationTheme from './config/themes/navigationCustomTheme';
-import {theme as StyleComponentsTheme} from './config/themes/styledComponentCustomTheme';
+import {themes as StyledComponentsThemes} from './config/themes/styledComponentCustomTheme';
 import {ThemeProvider} from 'styled-components/native';
+import AuthContext from './context/AuthContext';
+import MainNavigator from './navigators/MainNavigator';
 
-const Providers = ({children}: ViewProps) => {
+const Providers = () => {
+  const theme = StyledComponentsThemes[useColorScheme() || 'light'];
+
   return (
-    <ThemeProvider theme={StyleComponentsTheme}>
-      <NavigationContainer theme={ReactNavigationTheme}>
-        {children}
-      </NavigationContainer>
-    </ThemeProvider>
+    <AuthContext>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer theme={ReactNavigationTheme}>
+          <MainNavigator />
+        </NavigationContainer>
+      </ThemeProvider>
+    </AuthContext>
   );
 };
 
