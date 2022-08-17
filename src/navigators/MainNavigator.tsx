@@ -1,13 +1,20 @@
 import React from 'react';
-import {useAuthContext} from '../context/AuthContext';
+import {Button, Text, View} from 'react-native';
+import {useAuth} from '../context/AuthContext';
 import AuthNavigator from './AuthNavigator';
 
 const MainNavigator = () => {
-  const {isLoggedIn} = useAuthContext();
+  const {user, signOut} = useAuth();
 
-  if (isLoggedIn) {
-    return <></>;
+  if (user) {
+    return (
+      <View>
+        <Text>User is logged in</Text>
+        <Button title="logout" onPress={signOut} />
+      </View>
+    );
   }
+
   return <AuthNavigator />;
 };
 

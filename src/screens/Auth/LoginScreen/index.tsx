@@ -1,22 +1,28 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Platform} from 'react-native';
 import {BrandContainer, Container, FormContainer} from './styles';
 import FakitterLogo from '../../../assets/img/fakitter-logo.svg';
 import InputText from '../../../components/Input';
 import {FormField} from '../../../components/Input/styles';
 import Button from '../../../components/Button';
-import {login} from '../../../services/auth';
+import {useAuth} from '../../../context/AuthContext';
 
 const LoginScreen = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [loading, setLoading] = React.useState(false);
 
+  const {signIn, user} = useAuth();
+
   const handleSubmit = async () => {
     setLoading(true);
-    const userData = await login(email, password);
+    await signIn({email, password});
     setLoading(false);
   };
+
+  useEffect(() => {
+    console.log({user});
+  }, [user]);
 
   return (
     <Container>
