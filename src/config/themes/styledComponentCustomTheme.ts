@@ -2,7 +2,35 @@
 import * as styledComponents from 'styled-components/native';
 import {DefaultTheme} from 'styled-components';
 
-const theme: DefaultTheme = {};
+type Themes = {
+  light: DefaultTheme;
+  dark: DefaultTheme;
+};
+
+const themes: Themes = {
+  light: {
+    primary: '#159d98',
+    components: {
+      button: {
+        primary: {
+          backgroundColor: '#bf9200',
+          textColor: '#fff',
+        },
+      },
+    },
+  },
+  dark: {
+    primary: '#313131',
+    components: {
+      button: {
+        primary: {
+          backgroundColor: '#505050',
+          textColor: '#fff',
+        },
+      },
+    },
+  },
+};
 
 const {
   default: styled,
@@ -10,5 +38,5 @@ const {
   ThemeProvider,
 } = styledComponents as styledComponents.ReactNativeThemedStyledComponentsModule<DefaultTheme>;
 
-export {css, ThemeProvider, theme};
+export {css, ThemeProvider, themes};
 export default styled;
