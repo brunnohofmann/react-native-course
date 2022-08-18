@@ -10,7 +10,10 @@ const {Screen, Navigator} = createStackNavigator<AuthContextScreenType>();
 
 const MainNavigator = () => {
   return (
-    <Navigator>
+    <Navigator
+      screenOptions={{
+        headerShown: false,
+      }}>
       <Screen name="LoginScreen" component={LoginScreen} />
     </Navigator>
   );
