@@ -10,6 +10,8 @@ type Themes = {
 const themes: Themes = {
   light: {
     primary: '#159d98',
+    secondary: '#0f6965',
+    tertiary: '#bf9200',
     components: {
       button: {
         primary: {
@@ -25,6 +27,8 @@ const themes: Themes = {
   },
   dark: {
     primary: '#313131',
+    secondary: '#1e1e1e',
+    tertiary: '#505050',
     components: {
       button: {
         primary: {

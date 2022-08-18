@@ -1,3 +1,4 @@
+import qs from 'qs';
 import {apiConn} from './api';
 import {User} from './auth';
 
@@ -69,6 +70,33 @@ export const getFakittersService = async (): Promise<Fakitter[]> => {
       sort: 'createdAt:desc',
     },
   });
+
+  return data.data.map(fakitterMapper);
+};
+
+export const getFakittersByUserIdService = async (
+  userId: number,
+): Promise<Fakitter[]> => {
+  const {data} = await apiConn().get<
+    GenericPaginationResponse<GetFakittersResponse>
+  >(
+    `fakitters?${qs.stringify(
+      {
+        populate: '*',
+        sort: 'createdAt:desc',
+        filters: {
+          user: {
+            id: {
+              $eq: userId,
+            },
+          },
+        },
+      },
+      {
+        encodeValuesOnly: true, // prettify URL
+      },
+    )}`,
+  );
 
   return data.data.map(fakitterMapper);
 };
