@@ -69,6 +69,7 @@ const AuthProvider = ({children}: AuthProviderProps) => {
 
   const signOut = useCallback(async () => {
     await AsyncStorage.multiRemove(['@Fakitter:jwt', '@Fakitter:user']);
+    api.defaults.headers.common.Authorization = false;
 
     setData({} as AuthState);
   }, []);
