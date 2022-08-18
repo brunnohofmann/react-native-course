@@ -6,18 +6,11 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import {apiConn} from '../services/api';
+import {login, User} from '../services/auth';
 
 type AuthProviderProps = {
   children: React.ReactNode;
 };
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  username: string;
-}
 
 interface AuthState {
   jwt: string;
@@ -57,15 +50,10 @@ const AuthProvider = ({children}: AuthProviderProps) => {
     }
 
     loadStorageData();
-  }, [data]);
+  }, []);
 
   const signIn = useCallback(async ({email, password}: SignInCredentials) => {
-    const response = await apiConn().post<AuthState>('auth/local', {
-      identifier: email,
-      password,
-    });
-
-    const {jwt, user} = response.data;
+    const {jwt, user} = await login(email, password);
 
     await AsyncStorage.multiSet([
       ['@Fakitter:jwt', jwt],

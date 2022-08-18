@@ -5,6 +5,7 @@ export interface User {
   email: string;
   name: string;
   id: number;
+  createdAt: Date;
 }
 
 export interface UserAttributesApiResponse {
@@ -25,6 +26,7 @@ const userMapper = (user: UserAttributesApiResponse): User => {
     username: user.username,
     email: user.email,
     name: user.name,
+    createdAt: new Date(user.createdAt),
   };
 };
 
@@ -35,7 +37,7 @@ export const login = async (
   const response = await apiConn().post<{
     jwt: string;
     user: UserAttributesApiResponse;
-  }>(`auth/local`, {
+  }>('auth/local', {
     identifier: username,
     password,
   });
@@ -53,7 +55,7 @@ type registerParams = {
 export const register = async (userData: registerParams): Promise<User> => {
   const response = await apiConn().post<{
     user: UserAttributesApiResponse;
-  }>(`auth/local/register`, userData);
+  }>('auth/local/register', userData);
 
   return userMapper(response.data.user);
 };
