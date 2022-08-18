@@ -16,6 +16,10 @@ const themes: Themes = {
           backgroundColor: '#bf9200',
           textColor: '#fff',
         },
+        secondary: {
+          backgroundColor: '#2c3e50',
+          textColor: '#fff',
+        },
       },
     },
   },
@@ -25,6 +29,10 @@ const themes: Themes = {
       button: {
         primary: {
           backgroundColor: '#505050',
+          textColor: '#fff',
+        },
+        secondary: {
+          backgroundColor: '#2c3e50',
           textColor: '#fff',
         },
       },

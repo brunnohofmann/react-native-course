@@ -1,6 +1,14 @@
 import React, {useEffect} from 'react';
 import {Platform} from 'react-native';
-import {BrandContainer, Container, FormContainer} from './styles';
+import {useNavigation} from '@react-navigation/native';
+import {
+  BrandContainer,
+  Container,
+  CreateMyAccountButton,
+  CreateMyAccountIcon,
+  CreateMyAccountText,
+  FormContainer,
+} from './styles';
 import FakitterLogo from '../../../assets/img/fakitter-logo.svg';
 import InputText from '../../../components/Input';
 import {FormField} from '../../../components/Input/styles';
@@ -13,6 +21,7 @@ const LoginScreen = () => {
   const [loading, setLoading] = React.useState(false);
 
   const {signIn, user} = useAuth();
+  const navigation = useNavigation();
 
   const handleSubmit = async () => {
     setLoading(true);
@@ -50,6 +59,13 @@ const LoginScreen = () => {
           <Button loading={loading} title="Login" onPress={handleSubmit} />
         </FormField>
       </FormContainer>
+
+      <CreateMyAccountButton
+        onPress={() => navigation.navigate('SignUpScreen' as never)}>
+        <CreateMyAccountIcon />
+
+        <CreateMyAccountText>Criar minha conta</CreateMyAccountText>
+      </CreateMyAccountButton>
     </Container>
   );
 };

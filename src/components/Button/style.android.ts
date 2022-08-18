@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const ButtonContainer = styled.Pressable`
   background-color: ${({theme}) =>
-    theme.components.button.primary.backgroundColor};
+    theme.components.button.secondary.backgroundColor};
   border-radius: 8px;
   padding: 16px;
   align-items: center;
