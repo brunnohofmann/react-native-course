@@ -1,23 +1,29 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Header from '../../../components/Header';
-import {Fakitter} from '../../../services/fakitters';
+import {Fakitter, getFakittersService} from '../../../services/fakitters';
 import FakitterComp from '../../../components/Fakitter';
-import {useAuth} from '../../../context/AuthContext';
+import {FlatList} from 'react-native';
 
 const FakittersScreen = () => {
-  const {user} = useAuth();
+  const [fakitters, setFakitters] = React.useState<Fakitter[]>([]);
 
-  const singleFakitter: Fakitter = {
-    id: 1,
-    user,
-    text: 'Este um exemplo de um fakitter',
-    createdAt: new Date(),
-  };
+  useEffect(() => {
+    const loadFakitters = async () => {
+      const fakittersData = await getFakittersService();
+      setFakitters(fakittersData);
+    };
+
+    loadFakitters();
+  }, []);
 
   return (
     <>
       <Header />
-      <FakitterComp fakitter={singleFakitter} />
+      <FlatList
+        data={fakitters}
+        keyExtractor={item => String(item.id)}
+        renderItem={({item}) => <FakitterComp fakitter={item} />}
+      />
     </>
   );
 };

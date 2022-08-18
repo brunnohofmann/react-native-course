@@ -14,3 +14,7 @@ export const AvatarContainer = styled.View<AvatarContainerProps>`
   align-items: center;
   padding: ${props => props.size / 4}px;
 `;
+
+export const AvatarText = styled.Text<{size: number}>`
+  font-size: ${props => props.size / 3}px;
+`;

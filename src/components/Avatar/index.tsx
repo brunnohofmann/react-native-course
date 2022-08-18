@@ -1,7 +1,6 @@
 import React from 'react';
-import {AvatarContainer} from './styles';
+import {AvatarContainer, AvatarText} from './styles';
 import {generateColorByString} from '../../utils/colors';
-import {Text} from 'react-native';
 import {getInitialsByName} from '../../utils/strings';
 import {User} from '../../services/auth';
 
@@ -16,7 +15,7 @@ const Avatar = ({size, user}: AvatarProps) => {
 
   return (
     <AvatarContainer size={size} color={color}>
-      <Text>{initials}</Text>
+      <AvatarText size={size}>{initials}</AvatarText>
     </AvatarContainer>
   );
 };

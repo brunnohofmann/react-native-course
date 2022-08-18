@@ -5,30 +5,27 @@ export interface Fakitter {
   id: number;
   text: string;
   user: User;
-  createdAt: Date;
 }
 
 interface GetFakittersResponse {
-  data: {
-    id: number;
-    attributes: {
-      text: string;
-      createdAt: Date;
-      updatedAt: Date;
-      publishedAt: Date;
-      user: {
-        data: {
-          id: number;
-          attributes: {
-            username: string;
-            email: string;
-            provider: string;
-            confirmed: boolean;
-            blocked: boolean;
-            createdAt: Date;
-            updatedAt: Date;
-            name: string;
-          };
+  id: number;
+  attributes: {
+    text: string;
+    createdAt: Date;
+    updatedAt: Date;
+    publishedAt: Date;
+    user: {
+      data: {
+        id: number;
+        attributes: {
+          username: string;
+          email: string;
+          provider: string;
+          confirmed: boolean;
+          blocked: boolean;
+          createdAt: Date;
+          updatedAt: Date;
+          name: string;
         };
       };
     };
@@ -48,7 +45,7 @@ interface GenericPaginationResponse<T> {
 }
 
 const fakitterMapper = (response: GetFakittersResponse): Fakitter => {
-  const {attributes, id} = response.data;
+  const {attributes, id} = response;
 
   return {
     text: attributes.text,

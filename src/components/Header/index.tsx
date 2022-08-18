@@ -11,7 +11,7 @@ const Header = () => {
   const theme = useContext(ThemeContext);
   return (
     <Container>
-      <Avatar size={40} user={user} />
+      <Avatar size={30} user={user} />
       <BrandContainer>
         <Brand fill={theme.primary} width={36} height={36} />
       </BrandContainer>
