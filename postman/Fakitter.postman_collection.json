@@ -138,17 +138,22 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "brunnohofmann@hotmail.com",
+									"value": "eduardocampor@hotmail.com",
 									"type": "text"
 								},
 								{
 									"key": "username",
-									"value": "brunnohofmann",
+									"value": "eduardocampos",
 									"type": "text"
 								},
 								{
 									"key": "password",
 									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Eduardo Campos",
 									"type": "text"
 								}
 							]
@@ -221,7 +226,7 @@
 					]
 				},
 				"url": {
-					"raw": "https://stark-falls-35563.herokuapp.com/api/fakitters?populate=*&sort=createdAt:desc",
+					"raw": "https://stark-falls-35563.herokuapp.com/api/fakitters?populate=*&sort=createdAt:desc&pagination[page]=1&pagination[pageSize]=10",
 					"protocol": "https",
 					"host": [
 						"stark-falls-35563",
@@ -240,6 +245,14 @@
 						{
 							"key": "sort",
 							"value": "createdAt:desc"
+						},
+						{
+							"key": "pagination[page]",
+							"value": "1"
+						},
+						{
+							"key": "pagination[pageSize]",
+							"value": "10"
 						}
 					]
 				}
