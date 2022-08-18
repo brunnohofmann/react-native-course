@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
-  margin: 0 20px;
+  margin: 40px 20px;
 `;
 
 export const BrandContainer = styled.View`
