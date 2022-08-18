@@ -6,8 +6,8 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import {login, User} from '../services/auth';
-import {Api} from '../services/api';
+import {signInService, User} from '../services/auth';
+import {api} from '../services/api';
 
 type AuthProviderProps = {
   children: React.ReactNode;
@@ -45,7 +45,7 @@ const AuthProvider = ({children}: AuthProviderProps) => {
 
       if (jwt[1] && user[1]) {
         setData({jwt: jwt[1], user: JSON.parse(user[1])});
-        Api.getInstance().setAuthorization(jwt[1]);
+        api.defaults.headers.common.Authorization = `Bearer ${jwt[1]}`;
       }
 
       setLoading(false);
@@ -55,14 +55,14 @@ const AuthProvider = ({children}: AuthProviderProps) => {
   }, []);
 
   const signIn = useCallback(async ({email, password}: SignInCredentials) => {
-    const {jwt, user} = await login(email, password);
+    const {jwt, user} = await signInService(email, password);
 
     await AsyncStorage.multiSet([
       ['@Fakitter:jwt', jwt],
       ['@Fakitter:user', JSON.stringify(user)],
     ]);
 
-    Api.getInstance().setAuthorization(jwt);
+    api.defaults.headers.common.Authorization = `Bearer ${jwt}`;
 
     setData({jwt, user});
   }, []);

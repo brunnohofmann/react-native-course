@@ -30,7 +30,7 @@ const userMapper = (user: UserAttributesApiResponse): User => {
   };
 };
 
-export const login = async (
+export const signInService = async (
   username: string,
   password: string,
 ): Promise<{jwt: string; user: User}> => {
