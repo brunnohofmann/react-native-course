@@ -24,7 +24,5 @@ export class Api {
 }
 
 export const apiConn = (): AxiosInstance => {
-  return axios.create({
-    baseURL: 'https://stark-falls-35563.herokuapp.com/api',
-  });
+  return Api.getInstance().conn;
 };

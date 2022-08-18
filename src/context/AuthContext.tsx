@@ -7,6 +7,7 @@ import React, {
   useState,
 } from 'react';
 import {login, User} from '../services/auth';
+import {Api} from '../services/api';
 
 type AuthProviderProps = {
   children: React.ReactNode;
@@ -44,6 +45,7 @@ const AuthProvider = ({children}: AuthProviderProps) => {
 
       if (jwt[1] && user[1]) {
         setData({jwt: jwt[1], user: JSON.parse(user[1])});
+        Api.getInstance().setAuthorization(jwt[1]);
       }
 
       setLoading(false);
@@ -59,6 +61,8 @@ const AuthProvider = ({children}: AuthProviderProps) => {
       ['@Fakitter:jwt', jwt],
       ['@Fakitter:user', JSON.stringify(user)],
     ]);
+
+    Api.getInstance().setAuthorization(jwt);
 
     setData({jwt, user});
   }, []);
