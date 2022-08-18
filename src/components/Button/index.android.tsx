@@ -4,7 +4,7 @@ import {
   ActivityIndicatorContainer,
   ButtonContainer,
   ButtonText,
-} from './style.ios';
+} from './style.android';
 
 type ButtonProps = {
   title: string;
