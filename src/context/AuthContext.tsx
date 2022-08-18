@@ -43,12 +43,10 @@ const AuthProvider = ({children}: AuthProviderProps) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log({data});
-
     async function loadStorageData(): Promise<void> {
       const [jwt, user] = await AsyncStorage.multiGet([
         '@Fakitter:jwt',
-        '@Fakitter: user',
+        '@Fakitter:user',
       ]);
 
       if (jwt[1] && user[1]) {
@@ -90,10 +88,6 @@ const AuthProvider = ({children}: AuthProviderProps) => {
   );
 };
 
-const useAuth = (): AuthContextData => {
-  const context = useContext(AuthContext);
-
-  return context;
-};
+const useAuth = (): AuthContextData => useContext(AuthContext);
 
 export {AuthProvider, useAuth};
