@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {
   createContext,
   useCallback,
@@ -6,6 +5,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {signInService, User} from '../services/auth';
 import {api} from '../services/api';
 
