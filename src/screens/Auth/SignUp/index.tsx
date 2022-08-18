@@ -10,7 +10,7 @@ import {
 import FakitterLogo from '../../../assets/img/fakitter-logo.svg';
 import {Platform} from 'react-native';
 import {FormField} from '../../../components/Input/styles';
-import InputText from '../../../components/Input';
+import Input from '../../../components/Input';
 import Button from '../../../components/Button/';
 import {useNavigation} from '@react-navigation/native';
 
@@ -31,7 +31,7 @@ export const SignUp = () => {
 
       <FormContainer behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <FormField>
-          <InputText
+          <Input
             onChangeText={setName}
             maxLength={50}
             keyboardType="default"
@@ -39,7 +39,7 @@ export const SignUp = () => {
           />
         </FormField>
         <FormField>
-          <InputText
+          <Input
             onChangeText={setUserName}
             maxLength={50}
             keyboardType="default"
@@ -47,7 +47,7 @@ export const SignUp = () => {
           />
         </FormField>
         <FormField>
-          <InputText
+          <Input
             onChangeText={setEmail}
             maxLength={50}
             keyboardType="email-address"
@@ -55,7 +55,7 @@ export const SignUp = () => {
           />
         </FormField>
         <FormField>
-          <InputText
+          <Input
             onChangeText={setPassword}
             maxLength={12}
             placeholder="Password"

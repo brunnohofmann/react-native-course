@@ -15,7 +15,7 @@ export const BrandContainer = styled.View`
 export const FormContainer = styled.KeyboardAvoidingView``;
 
 export const CreateMyAccountButton = styled.TouchableOpacity`
-  margin-top: 10px;
+  margin-top: 20px;
 
   flex-direction: row;
   align-items: center;

@@ -10,7 +10,7 @@ import {
   FormContainer,
 } from './styles';
 import FakitterLogo from '../../../assets/img/fakitter-logo.svg';
-import InputText from '../../../components/Input';
+import Input from '../../../components/Input';
 import {FormField} from '../../../components/Input/styles';
 import Button from '../../../components/Button';
 import {useAuth} from '../../../context/AuthContext';
@@ -40,7 +40,7 @@ const LoginScreen = () => {
       </BrandContainer>
       <FormContainer behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <FormField>
-          <InputText
+          <Input
             onChangeText={setEmail}
             maxLength={50}
             keyboardType="email-address"
@@ -48,7 +48,7 @@ const LoginScreen = () => {
           />
         </FormField>
         <FormField>
-          <InputText
+          <Input
             onChangeText={setPassword}
             maxLength={12}
             placeholder="Password"

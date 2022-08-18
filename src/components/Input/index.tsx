@@ -1,8 +1,13 @@
 import React from 'react';
-import {TextInput, TextInputProps} from 'react-native';
+import {TextInputProps} from 'react-native';
+import {InputContainer, TextInput} from './styles';
 
-const InputText = (props: TextInputProps) => {
-  return <TextInput {...props} />;
+const Input = (props: TextInputProps) => {
+  return (
+    <InputContainer>
+      <TextInput {...props} />
+    </InputContainer>
+  );
 };
 
-export default InputText;
+export default Input;
