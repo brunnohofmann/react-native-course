@@ -1,8 +1,12 @@
 import React from 'react';
-import {Text} from 'react-native';
+import Header from '../../../components/Header';
 
 const FakittersScreen = () => {
-  return <Text>Fakitters</Text>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 };
 
 export default FakittersScreen;
