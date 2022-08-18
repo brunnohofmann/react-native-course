@@ -12,10 +12,10 @@ export const BrandContainer = styled.View`
   margin: 16px;
 `;
 
-export const FormContainer = styled.KeyboardAvoidingView``;
+export const KeyboardAvoidingView = styled.KeyboardAvoidingView``;
 
 export const CreateMyAccountButton = styled.TouchableOpacity`
-  margin-top: 20px;
+  margin: 20px auto 0;
 
   flex-direction: row;
   align-items: center;

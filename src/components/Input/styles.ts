@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const FormField = styled.View`
-  margin: 16px 0;
+  margin: 8px 0;
 `;
 
 export const InputContainer = styled.View`

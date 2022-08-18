@@ -7,7 +7,7 @@ import {
   CreateMyAccountButton,
   CreateMyAccountIcon,
   CreateMyAccountText,
-  FormContainer,
+  KeyboardAvoidingView,
 } from './styles';
 import FakitterLogo from '../../../assets/img/fakitter-logo.svg';
 import Input from '../../../components/Input';
@@ -38,7 +38,8 @@ const LoginScreen = () => {
       <BrandContainer>
         <FakitterLogo fill="#fff" width={100} height={100} />
       </BrandContainer>
-      <FormContainer behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <FormField>
           <Input
             onChangeText={setEmail}
@@ -58,14 +59,14 @@ const LoginScreen = () => {
         <FormField>
           <Button loading={loading} title="Login" onPress={handleSubmit} />
         </FormField>
-      </FormContainer>
 
-      <CreateMyAccountButton
-        onPress={() => navigation.navigate('SignUpScreen' as never)}>
-        <CreateMyAccountIcon />
+        <CreateMyAccountButton
+          onPress={() => navigation.navigate('SignUpScreen' as never)}>
+          <CreateMyAccountIcon />
 
-        <CreateMyAccountText>Criar minha conta</CreateMyAccountText>
-      </CreateMyAccountButton>
+          <CreateMyAccountText>Criar minha conta</CreateMyAccountText>
+        </CreateMyAccountButton>
+      </KeyboardAvoidingView>
     </Container>
   );
 };
