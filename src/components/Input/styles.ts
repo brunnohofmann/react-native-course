@@ -11,7 +11,7 @@ export const InputContainer = styled.View`
   padding: 0 20px;
 `;
 
-export const TextInput = styled.TextInput.attrs({
+export const StyledTextInput = styled.TextInput.attrs({
   placeholderTextColor: '#fcfcfc',
   color: '#fff',
 })``;

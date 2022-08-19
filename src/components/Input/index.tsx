@@ -1,13 +1,13 @@
-import React from 'react';
-import {TextInputProps} from 'react-native';
-import {InputContainer, TextInput} from './styles';
+import React, {forwardRef} from 'react';
+import {TextInputProps, TextInput} from 'react-native';
+import {InputContainer, StyledTextInput} from './styles';
 
-const Input = (props: TextInputProps) => {
+const Input = forwardRef<TextInput, TextInputProps>((props, ref) => {
   return (
     <InputContainer>
-      <TextInput {...props} />
+      <StyledTextInput {...props} ref={ref} />
     </InputContainer>
   );
-};
+});
 
 export default Input;
