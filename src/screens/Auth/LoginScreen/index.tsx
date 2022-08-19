@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {Platform} from 'react-native';
+import React, {useEffect, useRef} from 'react';
+import {Platform, TextInput} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {
   BrandContainer,
@@ -10,7 +10,7 @@ import {
   KeyboardAvoidingView,
 } from './styles';
 import FakitterLogo from '../../../assets/img/fakitter-logo.svg';
-import Input from '../../../components/Input';
+import StyledTextInput from '../../../components/Input';
 import {FormField} from '../../../components/Input/styles';
 import Button from '../../../components/Button';
 import {useAuth} from '../../../context/AuthContext';
@@ -19,6 +19,8 @@ const LoginScreen = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [loading, setLoading] = React.useState(false);
+
+  const passwordInputRef = useRef<TextInput>(null);
 
   const {signIn, user} = useAuth();
   const navigation = useNavigation();
@@ -41,19 +43,26 @@ const LoginScreen = () => {
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <FormField>
-          <Input
+          <StyledTextInput
             onChangeText={setEmail}
             maxLength={50}
             keyboardType="email-address"
             placeholder="Email"
+            autoCapitalize="none"
+            returnKeyType="next"
+            onSubmitEditing={() => {
+              passwordInputRef.current?.focus();
+            }}
           />
         </FormField>
         <FormField>
-          <Input
+          <StyledTextInput
+            ref={passwordInputRef}
             onChangeText={setPassword}
             maxLength={12}
             placeholder="Password"
             secureTextEntry
+            onSubmitEditing={handleSubmit}
           />
         </FormField>
         <FormField>

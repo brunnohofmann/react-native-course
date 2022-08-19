@@ -1,5 +1,5 @@
-import React, {useState, useCallback} from 'react';
-import {Platform, Alert} from 'react-native';
+import React, {useState, useCallback, useRef} from 'react';
+import {Platform, Alert, TextInput} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {
   BrandContainer,
@@ -21,6 +21,10 @@ export const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const usernameInputRef = useRef<TextInput>(null);
+  const emailInputRef = useRef<TextInput>(null);
+  const passwordInputRef = useRef<TextInput>(null);
 
   const navigation = useNavigation();
 
@@ -63,30 +67,46 @@ export const SignUp = () => {
             maxLength={50}
             keyboardType="default"
             placeholder="Name"
+            returnKeyType="next"
+            onSubmitEditing={() => {
+              usernameInputRef.current?.focus();
+            }}
           />
         </FormField>
         <FormField>
           <Input
+            ref={usernameInputRef}
             onChangeText={setUserName}
             maxLength={50}
             keyboardType="default"
             placeholder="Username"
+            returnKeyType="next"
+            onSubmitEditing={() => {
+              emailInputRef.current?.focus();
+            }}
           />
         </FormField>
         <FormField>
           <Input
+            ref={emailInputRef}
             onChangeText={setEmail}
             maxLength={50}
             keyboardType="email-address"
             placeholder="Email"
+            returnKeyType="next"
+            onSubmitEditing={() => {
+              passwordInputRef.current?.focus();
+            }}
           />
         </FormField>
         <FormField>
           <Input
+            ref={passwordInputRef}
             onChangeText={setPassword}
             maxLength={12}
             placeholder="Password"
             secureTextEntry
+            onSubmitEditing={handleSignUp}
           />
         </FormField>
         <FormField>
