@@ -12,6 +12,7 @@ const themes: Themes = {
     primary: '#159d98',
     secondary: '#0f6965',
     tertiary: '#bf9200',
+    textColor: '#333',
     components: {
       button: {
         primary: {
@@ -29,6 +30,7 @@ const themes: Themes = {
     primary: '#313131',
     secondary: '#1e1e1e',
     tertiary: '#505050',
+    textColor: '#fff',
     components: {
       button: {
         primary: {

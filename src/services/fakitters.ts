@@ -8,6 +8,13 @@ export interface Fakitter {
   user: User;
 }
 
+interface PostFakkitData {
+  data: {
+    text: string;
+    user: number;
+  };
+}
+
 interface GetFakittersResponse {
   id: number;
   attributes: {
@@ -99,4 +106,10 @@ export const getFakittersByUserIdService = async (
   );
 
   return data.data.map(fakitterMapper);
+};
+
+export const postFakkit = async (fakkitData: PostFakkitData): Promise<any> => {
+  const response = await apiConn().post('fakitters', fakkitData);
+
+  return response;
 };
