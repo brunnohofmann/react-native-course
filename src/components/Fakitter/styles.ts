@@ -9,6 +9,7 @@ export const FakitterContainer = styled.View`
 
 export const FakitterContent = styled.View`
   margin-left: 10px;
+  flex: 1;
 `;
 
 export const FakitterHeader = styled.Text`
